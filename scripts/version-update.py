@@ -136,13 +136,14 @@ def update_config(new_version):
         print("Ошибка чтения config.json:", e)
         return
 
-    if "assembleConfiguration" in data and "version" in data["assembleConfiguration"]:
-        data["assembleConfiguration"]["version"] = new_version
+    try:
+        data["externalPart"]["assembleConfiguration"]["version"] = new_version
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
         print("config.json обновлён")
-    else:
+    except KeyError:
         print("Параметры версии не найдены в config.json, пропускаем его обновление")
+
 
 def commit_changes(new_version):
     # Настраиваем данные для git
