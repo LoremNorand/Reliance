@@ -21,6 +21,6 @@ jobs:
           python-version: '3.x'
 
       - name: Run version update script
-        run: python .github/workflows/version_update.py
+        run: python scripts/version_update.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
