@@ -34,7 +34,7 @@
     public record RelianceMetadata
     {
         public readonly string Name;
-        public readonly DateTime DateTime;
+        public readonly DateTime CallTime;
         public readonly string[] Args;
         public readonly object Caller;
         public readonly RelianceMetadataStatus Status;
@@ -44,8 +44,19 @@
             Caller = caller;
             Args = args;
             Name = caller.GetType().Name;
-            DateTime = DateTime.Now;
+            CallTime = DateTime.Now;
             Status = status;
         }
-    }
+
+		public override string? ToString()
+		{
+			return $"""
+                Имя: {Name}
+                {CallTime}
+                Статус: {Status}
+                Объект вызова: {Caller}
+                Аргументы: {string.Join(",", Args)}
+                """;
+		}
+	}
 }

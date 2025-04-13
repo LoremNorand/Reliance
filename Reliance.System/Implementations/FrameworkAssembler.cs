@@ -61,5 +61,14 @@
 		{
 			throw new NotImplementedException();
 		}
+
+		/// <summary>
+		/// The BuildPluginPacket
+		/// </summary>
+		/// <returns>The <see cref="RelianceMetadata?"/></returns>
+		public RelianceMetadata? BuildPluginPacket()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

@@ -42,5 +42,11 @@
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
 		public RelianceMetadata? BuildAnalyzePacket();
+
+		/// <summary>
+		/// The BuildPluginPacket
+		/// </summary>
+		/// <returns>The <see cref="RelianceMetadata?"/></returns>
+		public RelianceMetadata? BuildPluginPacket();
 	}
 }
