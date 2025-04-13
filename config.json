@@ -1,7 +1,7 @@
 {
   "externalPart": {
     "assembleConfiguration": {
-      "version": "0.0.1-dev.1"
+      "version": "0.0.3-dev.0"
     },
     "clusterConfiguration": {
       "name": "Remotism-Explorer",
@@ -28,8 +28,6 @@
       },
       "timeFormat": "(DD).(MM).(YYYY) | (hh:mm:ss:ttt)"
     },
-    "shardingConfiguration": {
-        
-    }
+    "shardingConfiguration": {}
   }
 }
