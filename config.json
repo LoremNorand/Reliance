@@ -1,0 +1,35 @@
+{
+  "externalPart": {
+    "assembleConfiguration": {
+      "version": "0.0.1-dev.1"
+    },
+    "clusterConfiguration": {
+      "name": "Remotism-Explorer",
+      "privateKey": {
+        "header": "ASCII Text",
+        "jsonControlSum": "NfYwL1gvdEOAS39kxCN9Jw==",
+        "libraryControlSum": "fdc19cd7-db4e-400b-ab33-6e708acf1461",
+        "row1": "qwertypassword",
+        "row2": "anotherpassword"
+      },
+      "relianceApiAdress": "/reliance-api",
+      "tokenExpiringSeconds": 120
+    },
+    "nodeConfiguration": {
+      "name": "RE-Router"
+    }
+  },
+  "internalPart": {
+    "loggerConfiguration": {
+      "indentSize": 4,
+      "logTruncating": {
+        "enabled": true,
+        "maxLength": 256
+      },
+      "timeFormat": "(DD).(MM).(YYYY) | (hh:mm:ss:ttt)"
+    },
+    "shardingConfiguration": {
+        
+    }
+  }
+}
