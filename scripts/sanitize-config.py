@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # github.com/LoremNorand/Reliance
 import json
+import subprocess
 import os
 
 CONFIG_PATH = "./config.json"
