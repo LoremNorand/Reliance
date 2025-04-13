@@ -90,8 +90,16 @@ def update_readme(new_version, commit_info, commit_author, commit_date):
     with open(filename, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Обновляем строку с версией, используя lambda для избежания конфликта с групповыми ссылками
-    content = re.sub(r'(Версия: ).*', lambda m: m.group(1) + new_version, content)
+    # Вывод исходного содержимого
+    print("Исходное содержимое README.md:")
+    print(content)
+
+    # Обновляем строку с версией
+    new_content = re.sub(r'(Версия: ).*', lambda m: m.group(1) + new_version, content)
+    # Если обновление не произошло, можно вывести уведомление
+    if content == new_content:
+        print("Замена строки 'Версия: ' не сработала. Проверьте формат файла.")
+    content = new_content
 
     # Обновляем блок "# Последние изменения"
     new_changes = (
@@ -99,16 +107,21 @@ def update_readme(new_version, commit_info, commit_author, commit_date):
         f"{commit_info['full']}\n\n"
         f"{commit_author}\n{commit_date}\n"
     )
-    content = re.sub(
+    new_content = re.sub(
         r'(# Последние изменения\n)(.*?)(\n#|\Z)',
         lambda m: m.group(1) + new_changes + m.group(3),
         content,
         flags=re.DOTALL
     )
+    content = new_content
+
+    print("Новое содержимое README.md:")
+    print(content)
 
     with open(filename, "w", encoding="utf-8") as f:
         f.write(content)
     print("README.md обновлён")
+
 
 def update_config(new_version):
     filename = "config.json"
