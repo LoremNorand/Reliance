@@ -90,11 +90,10 @@ def update_readme(new_version, commit_info, commit_author, commit_date):
     with open(filename, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Обновляем строку с версией
-    content = re.sub(r'(Версия: ).*', r'\1' + new_version, content)
+    # Обновляем строку с версией, используя lambda для избежания конфликта с групповыми ссылками
+    content = re.sub(r'(Версия: ).*', lambda m: m.group(1) + new_version, content)
 
     # Обновляем блок "# Последние изменения"
-    # Предполагаем, что блок начинается с "# Последние изменения" и продолжается до следующего заголовка или конца файла
     new_changes = (
         f"{commit_info['title']}\n\n"
         f"{commit_info['full']}\n\n"
@@ -102,7 +101,7 @@ def update_readme(new_version, commit_info, commit_author, commit_date):
     )
     content = re.sub(
         r'(# Последние изменения\n)(.*?)(\n#|\Z)',
-        r'\1' + new_changes + r'\3',
+        lambda m: m.group(1) + new_changes + m.group(3),
         content,
         flags=re.DOTALL
     )
@@ -174,7 +173,7 @@ def main():
     update_readme(new_version, commit_info, commit_author, commit_date)
     update_config(new_version)
 
-    # Совершаем commit и push изменений. Учти, что если файлов нет или изменений нет, commit не создаётся.
+    # Совершаем commit и push изменений. Если изменений нет, commit не создаётся.
     commit_changes(new_version)
 
 if __name__ == "__main__":
