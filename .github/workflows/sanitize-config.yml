@@ -1,4 +1,4 @@
-name: Sanitize Config
+name: Sanitize config
 
 on:
   push:
@@ -6,15 +6,15 @@ on:
       - master
 
 jobs:
-  sanitize_config:
-    if: github.actor != 'github-actions[bot]'  # Защита от рекурсии
+  update_version:
+    if: github.actor != 'github-actions[bot]'  # Р—Р°С‰РёС‚Р° РѕС‚ СЂРµРєСѓСЂСЃРёРё
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          persist-credentials: true
+          persist-credentials: true # РЅСѓР¶РЅРѕ РґР»СЏ git push
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
@@ -25,25 +25,7 @@ jobs:
       - name: Pull latest changes (safety net)
         run: git pull origin master
 
-      - name: Run config sanitization script
+      - name: Run version update script
         run: python scripts/sanitize-config.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Check for changes
-        run: |
-          if git diff --quiet; then
-            echo "Нет изменений в файлах, пуш не требуется"
-            echo "skip_push=true" >> $GITHUB_ENV
-          else
-            echo "Обнаружены изменения, будет пуш"
-            echo "skip_push=false" >> $GITHUB_ENV
-          fi
-
-      - name: Commit and push changes
-        if: env.skip_push == 'false'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -am "chore(config): sanitize sensitive fields [skip ci]"
-          git push origin master
