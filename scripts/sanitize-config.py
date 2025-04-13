@@ -47,7 +47,7 @@ def sanitize_config():
         print("config.json очищен от чувствительных данных.")
 
         # Добавим изменения для будущего коммита
-        os.system("git add config.json")
+        subprocess.run(["git", "add", CONFIG_PATH], check=True)
     else:
         print("Нечего очищать — все данные уже в порядке.")
 
