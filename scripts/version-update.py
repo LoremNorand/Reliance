@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import re
 import json
@@ -17,34 +19,34 @@ def get_current_version():
                 data = json.load(f)
                 version = data.get("assembleConfiguration", {}).get("version")
         except Exception as e:
-            print("Ошибка чтения config.json:", e)
+            print("ГЋГёГЁГЎГЄГ  Г·ГІГҐГ­ГЁГї config.json:", e)
     
-    # Если version не найден в config, ищем в README
+    # Г…Г±Г«ГЁ version Г­ГҐ Г­Г Г©Г¤ГҐГ­ Гў config, ГЁГ№ГҐГ¬ Гў README
     if not version and os.path.exists("README.md"):
         with open("README.md", "r", encoding="utf-8") as f:
             for line in f:
-                if line.startswith("Версия: "):
-                    version = line.split("Версия: ")[1].strip()
+                if line.startswith("Г‚ГҐГ°Г±ГЁГї: "):
+                    version = line.split("Г‚ГҐГ°Г±ГЁГї: ")[1].strip()
                     break
     if not version:
-        raise ValueError("Не удалось найти текущую версию ни в config.json, ни в README.md")
+        raise ValueError("ГЌГҐ ГіГ¤Г Г«Г®Г±Гј Г­Г Г©ГІГЁ ГІГҐГЄГіГ№ГіГѕ ГўГҐГ°Г±ГЁГѕ Г­ГЁ Гў config.json, Г­ГЁ Гў README.md")
     return version
 
 def parse_version(version):
-    # Ожидаемый формат: major.minor.patch-<tag>.micropatch
+    # ГЋГ¦ГЁГ¤Г ГҐГ¬Г»Г© ГґГ®Г°Г¬Г ГІ: major.minor.patch-<tag>.micropatch
     pattern = r'(\d+)\.(\d+)\.(\d+)-([^.]+)\.(\d+)'
     m = re.match(pattern, version)
     if m:
         major, minor, patch, tag, micropatch = m.groups()
         return int(major), int(minor), int(patch), tag, int(micropatch)
     else:
-        raise ValueError("Неверный формат версии: " + version)
+        raise ValueError("ГЌГҐГўГҐГ°Г­Г»Г© ГґГ®Г°Г¬Г ГІ ГўГҐГ°Г±ГЁГЁ: " + version)
 
 def bump_version(current_version, commit_info):
     major, minor, patch, current_tag, micropatch = parse_version(current_version)
     significant = False
 
-    # Если коммит соответствует Conventional, анализируем тип
+    # Г…Г±Г«ГЁ ГЄГ®Г¬Г¬ГЁГІ Г±Г®Г®ГІГўГҐГІГ±ГІГўГіГҐГІ Conventional, Г Г­Г Г«ГЁГ§ГЁГ°ГіГҐГ¬ ГІГЁГЇ
     commit_type = commit_info.get("type")
     if commit_type in ["feat", "fix"] or commit_info.get("breaking", False):
         significant = True
@@ -52,17 +54,17 @@ def bump_version(current_version, commit_info):
     if significant:
         patch += 1
         micropatch = 0
-        # Если присутствует state, меняем тег
+        # Г…Г±Г«ГЁ ГЇГ°ГЁГ±ГіГІГ±ГІГўГіГҐГІ state, Г¬ГҐГ­ГїГҐГ¬ ГІГҐГЈ
         tag = commit_info.get("state") if commit_info.get("state") else current_tag
     else:
-        # Для остальных обновляем только микропатч
+        # Г„Г«Гї Г®Г±ГІГ Г«ГјГ­Г»Гµ Г®ГЎГ­Г®ГўГ«ГїГҐГ¬ ГІГ®Г«ГјГЄГ® Г¬ГЁГЄГ°Г®ГЇГ ГІГ·
         micropatch += 1
         tag = current_tag
 
     return f"{major}.{minor}.{patch}-{tag}.{micropatch}"
 
 def parse_commit_message(msg):
-    # Используем regex: ^(.+)\((.+)\)(?P<state>\[.+\])?(!?): (.+)$
+    # Г€Г±ГЇГ®Г«ГјГ§ГіГҐГ¬ regex: ^(.+)\((.+)\)(?P<state>\[.+\])?(!?): (.+)$
     pattern = r'^(.+)\((.+)\)(?P<state>\[.+\])?(!?): (.+)$'
     m = re.match(pattern, msg)
     if m:
@@ -76,30 +78,30 @@ def parse_commit_message(msg):
         title = m.group(5).strip()
         return {"type": commit_type, "scope": scope, "state": state, "breaking": breaking, "title": title, "full": msg}
     else:
-        # Если не соответствует, считаем, что это неформальный коммит – обновляем только микропатч
+        # Г…Г±Г«ГЁ Г­ГҐ Г±Г®Г®ГІГўГҐГІГ±ГІГўГіГҐГІ, Г±Г·ГЁГІГ ГҐГ¬, Г·ГІГ® ГЅГІГ® Г­ГҐГґГ®Г°Г¬Г Г«ГјГ­Г»Г© ГЄГ®Г¬Г¬ГЁГІ вЂ“ Г®ГЎГ­Г®ГўГ«ГїГҐГ¬ ГІГ®Г«ГјГЄГ® Г¬ГЁГЄГ°Г®ГЇГ ГІГ·
         return {"type": None, "state": None, "breaking": False, "title": msg, "full": msg}
 
 def update_readme(new_version, commit_info, commit_author, commit_date):
     filename = "README.md"
     if not os.path.exists(filename):
-        print("README.md не найден, пропускаем его обновление")
+        print("README.md Г­ГҐ Г­Г Г©Г¤ГҐГ­, ГЇГ°Г®ГЇГіГ±ГЄГ ГҐГ¬ ГҐГЈГ® Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ")
         return
 
     with open(filename, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Обновляем строку с версией
-    content = re.sub(r'(Версия: ).*', r'\1' + new_version, content)
+    # ГЋГЎГ­Г®ГўГ«ГїГҐГ¬ Г±ГІГ°Г®ГЄГі Г± ГўГҐГ°Г±ГЁГҐГ©
+    content = re.sub(r'(Г‚ГҐГ°Г±ГЁГї: ).*', r'\1' + new_version, content)
 
-    # Обновляем блок "# Последние изменения"
-    # Предполагаем, что блок начинается с "# Последние изменения" и до следующего заголовка либо конца файла
+    # ГЋГЎГ­Г®ГўГ«ГїГҐГ¬ ГЎГ«Г®ГЄ "# ГЏГ®Г±Г«ГҐГ¤Г­ГЁГҐ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГї"
+    # ГЏГ°ГҐГ¤ГЇГ®Г«Г ГЈГ ГҐГ¬, Г·ГІГ® ГЎГ«Г®ГЄ Г­Г Г·ГЁГ­Г ГҐГІГ±Гї Г± "# ГЏГ®Г±Г«ГҐГ¤Г­ГЁГҐ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГї" ГЁ Г¤Г® Г±Г«ГҐГ¤ГіГѕГ№ГҐГЈГ® Г§Г ГЈГ®Г«Г®ГўГЄГ  Г«ГЁГЎГ® ГЄГ®Г­Г¶Г  ГґГ Г©Г«Г 
     new_changes = (
         f"{commit_info['title']}\n\n"
         f"{commit_info['full']}\n\n"
         f"{commit_author}\n{commit_date}\n"
     )
     content = re.sub(
-        r'(# Последние изменения\n)(.*?)(\n#|\Z)',
+        r'(# ГЏГ®Г±Г«ГҐГ¤Г­ГЁГҐ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГї\n)(.*?)(\n#|\Z)',
         r'\1' + new_changes + r'\3',
         content,
         flags=re.DOTALL
@@ -107,72 +109,72 @@ def update_readme(new_version, commit_info, commit_author, commit_date):
 
     with open(filename, "w", encoding="utf-8") as f:
         f.write(content)
-    print("README.md обновлён")
+    print("README.md Г®ГЎГ­Г®ГўГ«ВёГ­")
 
 def update_config(new_version):
     filename = "config.json"
     if not os.path.exists(filename):
-        print("config.json не найден, пропускаем его обновление")
+        print("config.json Г­ГҐ Г­Г Г©Г¤ГҐГ­, ГЇГ°Г®ГЇГіГ±ГЄГ ГҐГ¬ ГҐГЈГ® Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ")
         return
 
     try:
         with open(filename, "r", encoding="utf-8") as f:
             data = json.load(f)
     except Exception as e:
-        print("Ошибка чтения config.json:", e)
+        print("ГЋГёГЁГЎГЄГ  Г·ГІГҐГ­ГЁГї config.json:", e)
         return
 
     if "assembleConfiguration" in data and "version" in data["assembleConfiguration"]:
         data["assembleConfiguration"]["version"] = new_version
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-        print("config.json обновлён")
+        print("config.json Г®ГЎГ­Г®ГўГ«ВёГ­")
     else:
-        print("Параметры версии не найдены в config.json, пропускаем его обновление")
+        print("ГЏГ Г°Г Г¬ГҐГІГ°Г» ГўГҐГ°Г±ГЁГЁ Г­ГҐ Г­Г Г©Г¤ГҐГ­Г» Гў config.json, ГЇГ°Г®ГЇГіГ±ГЄГ ГҐГ¬ ГҐГЈГ® Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ")
 
 def commit_changes(new_version):
-    # Настраиваем данные для git
+    # ГЌГ Г±ГІГ°Г ГЁГўГ ГҐГ¬ Г¤Г Г­Г­Г»ГҐ Г¤Г«Гї git
     subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
     subprocess.run(["git", "config", "user.email", "github-actions@github.com"], check=True)
 
-    # Добавляем файлы
+    # Г„Г®ГЎГ ГўГ«ГїГҐГ¬ ГґГ Г©Г«Г»
     subprocess.run(["git", "add", "README.md"])
     if os.path.exists("config.json"):
         subprocess.run(["git", "add", "config.json"])
 
-    # Делаем commit с [skip ci]
+    # Г„ГҐГ«Г ГҐГ¬ commit Г± [skip ci]
     commit_msg = f"chore(version): bump version to {new_version} [skip ci]"
     result = subprocess.run(["git", "commit", "-m", commit_msg])
     if result.returncode == 0:
         subprocess.run(["git", "push"])
-        print("Новая версия зафиксирована и отправлена в репозиторий")
+        print("ГЌГ®ГўГ Гї ГўГҐГ°Г±ГЁГї Г§Г ГґГЁГЄГ±ГЁГ°Г®ГўГ Г­Г  ГЁ Г®ГІГЇГ°Г ГўГ«ГҐГ­Г  Гў Г°ГҐГЇГ®Г§ГЁГІГ®Г°ГЁГ©")
     else:
-        print("Нет изменений для коммита")
+        print("ГЌГҐГІ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГ© Г¤Г«Гї ГЄГ®Г¬Г¬ГЁГІГ ")
 
 def main():
-    # Получаем последний коммит
+    # ГЏГ®Г«ГіГ·Г ГҐГ¬ ГЇГ®Г±Г«ГҐГ¤Г­ГЁГ© ГЄГ®Г¬Г¬ГЁГІ
     commit_msg = get_latest_commit_message()
-    print("Последнее сообщение коммита:", commit_msg)
+    print("ГЏГ®Г±Г«ГҐГ¤Г­ГҐГҐ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ ГЄГ®Г¬Г¬ГЁГІГ :", commit_msg)
     commit_info = parse_commit_message(commit_msg)
-    print("Парсинг коммита:", commit_info)
+    print("ГЏГ Г°Г±ГЁГ­ГЈ ГЄГ®Г¬Г¬ГЁГІГ :", commit_info)
     
-    # Получаем текущую версию
+    # ГЏГ®Г«ГіГ·Г ГҐГ¬ ГІГҐГЄГіГ№ГіГѕ ГўГҐГ°Г±ГЁГѕ
     current_version = get_current_version()
-    print("Текущая версия:", current_version)
+    print("Г’ГҐГЄГіГ№Г Гї ГўГҐГ°Г±ГЁГї:", current_version)
 
-    # Вычисляем новую версию по логике
+    # Г‚Г»Г·ГЁГ±Г«ГїГҐГ¬ Г­Г®ГўГіГѕ ГўГҐГ°Г±ГЁГѕ ГЇГ® Г«Г®ГЈГЁГЄГҐ
     new_version = bump_version(current_version, commit_info)
-    print("Новая версия:", new_version)
+    print("ГЌГ®ГўГ Гї ГўГҐГ°Г±ГЁГї:", new_version)
 
-    # Получаем информацию об авторе и дате коммита
+    # ГЏГ®Г«ГіГ·Г ГҐГ¬ ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГѕ Г®ГЎ Г ГўГІГ®Г°ГҐ ГЁ Г¤Г ГІГҐ ГЄГ®Г¬Г¬ГЁГІГ 
     commit_author = subprocess.run(["git", "log", "-1", "--pretty=%an"], capture_output=True, text=True).stdout.strip()
     commit_date = subprocess.run(["git", "log", "-1", "--pretty=%cd", "--date=short"], capture_output=True, text=True).stdout.strip()
 
-    # Обновляем файлы
+    # ГЋГЎГ­Г®ГўГ«ГїГҐГ¬ ГґГ Г©Г«Г»
     update_readme(new_version, commit_info, commit_author, commit_date)
     update_config(new_version)
 
-    # Совершаем commit и push изменений. Учти, что если файлов нет или изменений нет, commit не создаётся.
+    # Г‘Г®ГўГҐГ°ГёГ ГҐГ¬ commit ГЁ push ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГ©. Г“Г·ГІГЁ, Г·ГІГ® ГҐГ±Г«ГЁ ГґГ Г©Г«Г®Гў Г­ГҐГІ ГЁГ«ГЁ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГ© Г­ГҐГІ, commit Г­ГҐ Г±Г®Г§Г¤Г ВёГІГ±Гї.
     commit_changes(new_version)
 
 if __name__ == "__main__":
