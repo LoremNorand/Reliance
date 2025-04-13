@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# github.com/LoremNorand/Reliance
 import json
 import os
 
@@ -6,7 +7,7 @@ CONFIG_PATH = "./config.json"
 
 def sanitize_config():
     if not os.path.exists(CONFIG_PATH):
-        print("config.json не найден.")
+        print("config.json РЅРµ РЅР°Р№РґРµРЅ.")
         return
 
     with open(CONFIG_PATH, "r", encoding="utf-8") as f:
@@ -37,18 +38,18 @@ def sanitize_config():
             modified = True
 
     except KeyError as e:
-        print(f"Ошибка доступа к ключу: {e}")
+        print(f"РћС€РёР±РєР° РґРѕСЃС‚СѓРїР° Рє РєР»СЋС‡Сѓ: {e}")
         return
 
     if modified:
         with open(CONFIG_PATH, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-        print("config.json очищен от чувствительных данных.")
+        print("config.json РѕС‡РёС‰РµРЅ РѕС‚ С‡СѓРІСЃС‚РІРёС‚РµР»СЊРЅС‹С… РґР°РЅРЅС‹С….")
 
-        # Добавим изменения для будущего коммита
+        # Р”РѕР±Р°РІРёРј РёР·РјРµРЅРµРЅРёСЏ РґР»СЏ Р±СѓРґСѓС‰РµРіРѕ РєРѕРјРјРёС‚Р°
         os.system("git add config.json")
     else:
-        print("Нечего очищать — все данные уже в порядке.")
+        print("РќРµС‡РµРіРѕ РѕС‡РёС‰Р°С‚СЊ вЂ” РІСЃРµ РґР°РЅРЅС‹Рµ СѓР¶Рµ РІ РїРѕСЂСЏРґРєРµ.")
 
 if __name__ == "__main__":
     sanitize_config()
