@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reliance.System", "Reliance.System\Reliance.System.csproj", "{D2C0542B-B564-4315-B8BA-AA9E5EF3D941}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reliance.Core", "Reliance.Core\Reliance.Core.csproj", "{34C6EB59-A1E0-4DD8-B96F-2F7F51F29AED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reliance.Core", "Reliance.Core\Reliance.Core.csproj", "{34C6EB59-A1E0-4DD8-B96F-2F7F51F29AED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reliance.System", "Reliance.System\Reliance.System.csproj", "{F6B42E0B-AC30-4D47-B6E0-81B4F032B364}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reliance.Logging", "Reliance.Logging\Reliance.Logging.csproj", "{C502AD7F-3CA3-4B05-9F06-648CBD12AC87}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{29C5AE0E-E359-44A1-B087-9FA89C017F91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{5CF9563E-C652-444B-B93B-59072C60AF8C}"
+	ProjectSection(SolutionItems) = preProject
+		version-update.py = version-update.py
+		version-update.yml = version-update.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,21 +21,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D2C0542B-B564-4315-B8BA-AA9E5EF3D941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2C0542B-B564-4315-B8BA-AA9E5EF3D941}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2C0542B-B564-4315-B8BA-AA9E5EF3D941}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2C0542B-B564-4315-B8BA-AA9E5EF3D941}.Release|Any CPU.Build.0 = Release|Any CPU
 		{34C6EB59-A1E0-4DD8-B96F-2F7F51F29AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{34C6EB59-A1E0-4DD8-B96F-2F7F51F29AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34C6EB59-A1E0-4DD8-B96F-2F7F51F29AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34C6EB59-A1E0-4DD8-B96F-2F7F51F29AED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C502AD7F-3CA3-4B05-9F06-648CBD12AC87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C502AD7F-3CA3-4B05-9F06-648CBD12AC87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C502AD7F-3CA3-4B05-9F06-648CBD12AC87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C502AD7F-3CA3-4B05-9F06-648CBD12AC87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6B42E0B-AC30-4D47-B6E0-81B4F032B364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6B42E0B-AC30-4D47-B6E0-81B4F032B364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6B42E0B-AC30-4D47-B6E0-81B4F032B364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6B42E0B-AC30-4D47-B6E0-81B4F032B364}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5CF9563E-C652-444B-B93B-59072C60AF8C} = {29C5AE0E-E359-44A1-B087-9FA89C017F91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5D59B86-D63A-4428-9979-C81F6AD142F3}
