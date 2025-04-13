@@ -12,7 +12,7 @@ def get_latest_commit_message():
 
 def get_current_version():
     version = None
-    config_path = "config.json"
+    config_path = "./config.json"
     if os.path.exists(config_path):
         try:
             with open(config_path, "r", encoding="utf-8") as f:
