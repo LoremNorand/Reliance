@@ -1,0 +1,56 @@
+name: Major job
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sanitize_config:
+    if: github.actor != 'github-actions[bot]'  # Защита от рекурсии
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true # нужно для git push
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Pull latest changes (safety net)
+        run: git pull origin master
+
+      - name: Run config sanitize script
+        run: python scripts/sanitize-config.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  update_version:
+    if: github.actor != 'github-actions[bot]'  # Защита от рекурсии
+    runs-on: ubuntu-latest
+    needs: sanitize_config  # Зависимость от завершения sanitize_config
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true # нужно для git push
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Pull latest changes (safety net)
+        run: git pull origin master
+
+      - name: Run version update script
+        run: python scripts/version-update.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
