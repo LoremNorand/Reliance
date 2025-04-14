@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Reliance.Core\Reliance.Core.csproj" />
+    <ProjectReference Include="..\Reliance.Utility\Reliance.Utility.csproj" />
   </ItemGroup>
 
 </Project>

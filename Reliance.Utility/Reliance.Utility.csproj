@@ -6,12 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Launch\Implementations\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Reliance.Utility\Reliance.Utility.csproj" />
-  </ItemGroup>
-
 </Project>

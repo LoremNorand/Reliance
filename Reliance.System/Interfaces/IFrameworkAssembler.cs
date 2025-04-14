@@ -1,6 +1,6 @@
 ﻿namespace Reliance.System.Interfaces
 {
-	using Reliance.Core.Metadata;
+	using Reliance.Utility.Metadata;
 
 	/// <summary>
 	/// Defines the <see cref="IFrameworkAssembler" />
@@ -8,45 +8,45 @@
 	public interface IFrameworkAssembler
 	{
 		/// <summary>
-		/// The BuildCorePacket
+		/// The BuildCoreModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildCorePacket();
+		public RelianceMetadata? BuildCoreModule();
 
 		/// <summary>
-		/// The BuildApiPacket
+		/// The BuildApiModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildApiPacket();
+		public RelianceMetadata? BuildApiModule();
 
 		/// <summary>
-		/// The BuildLoggingPacket
+		/// The BuildLoggingModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildLoggingPacket();
+		public RelianceMetadata? BuildLoggingModule();
 
 		/// <summary>
-		/// The BuildSchedulingPacket
+		/// The BuildSchedulingModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildSchedulingPacket();
+		public RelianceMetadata? BuildSchedulingModule();
 
 		/// <summary>
-		/// The BuildCachingPacket
+		/// The BuildCachingModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildCachingPacket();
+		public RelianceMetadata? BuildCachingModule();
 
 		/// <summary>
-		/// The BuildAnalyzePacket
+		/// The BuildAnalyzeModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildAnalyzePacket();
+		public RelianceMetadata? BuildAnalyzeModule();
 
 		/// <summary>
-		/// The BuildPluginPacket
+		/// The BuildPluginModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildPluginPacket();
+		public RelianceMetadata? BuildPluginModule();
 	}
 }

@@ -1,9 +1,9 @@
-﻿using Reliance.Core.Metadata;
+﻿using Reliance.Utility.Metadata;
 
 namespace Reliance.Core.Launch.Interfaces
 {
     internal interface IJsonConfigAnalyzer
     {
-        public RelianceMetadata Analyze();
+        public RelianceMetadata? Analyze();
     }
 }

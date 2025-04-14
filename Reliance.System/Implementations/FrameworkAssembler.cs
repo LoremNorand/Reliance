@@ -1,6 +1,6 @@
 ﻿namespace Reliance.System.Implementations
 {
-	using Reliance.Core.Metadata;
+	using Reliance.Utility.Metadata;
 	using Reliance.System.Interfaces;
 
 	/// <summary>
@@ -9,64 +9,64 @@
 	internal class FrameworkAssembler : IFrameworkAssembler
 	{
 		/// <summary>
-		/// The BuildAnalyzePacket
+		/// The BuildAnalyzeModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildAnalyzePacket()
+		public RelianceMetadata? BuildAnalyzeModule()
 		{
 			throw new NotImplementedException();
 		}
 
 		/// <summary>
-		/// The BuildApiPacket
+		/// The BuildApiModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildApiPacket()
+		public RelianceMetadata? BuildApiModule()
 		{
 			throw new NotImplementedException();
 		}
 
 		/// <summary>
-		/// The BuildCachingPacket
+		/// The BuildCachingModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildCachingPacket()
+		public RelianceMetadata? BuildCachingModule()
 		{
 			throw new NotImplementedException();
 		}
 
 		/// <summary>
-		/// The BuildCorePacket
+		/// The BuildCoreModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildCorePacket()
+		public RelianceMetadata? BuildCoreModule()
 		{
 			throw new NotImplementedException();
 		}
 
 		/// <summary>
-		/// The BuildLoggingPacket
+		/// The BuildLoggingModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildLoggingPacket()
+		public RelianceMetadata? BuildLoggingModule()
 		{
 			throw new NotImplementedException();
 		}
 
 		/// <summary>
-		/// The BuildSchedulingPacket
+		/// The BuildSchedulingModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildSchedulingPacket()
+		public RelianceMetadata? BuildSchedulingModule()
 		{
 			throw new NotImplementedException();
 		}
 
 		/// <summary>
-		/// The BuildPluginPacket
+		/// The BuildPluginModule
 		/// </summary>
 		/// <returns>The <see cref="RelianceMetadata?"/></returns>
-		public RelianceMetadata? BuildPluginPacket()
+		public RelianceMetadata? BuildPluginModule()
 		{
 			throw new NotImplementedException();
 		}

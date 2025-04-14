@@ -1,7 +1,7 @@
 ﻿namespace Reliance.System
 {
 	using Microsoft.Extensions.Hosting;
-	using Reliance.Core.Metadata;
+	using Reliance.Utility.Metadata;
 	using Reliance.System.Implementations;
 	using Reliance.System.Interfaces;
 
@@ -36,12 +36,12 @@
 		{
 			List<RelianceMetadata?> executions =
 			[
-				_frameworkAssembler.BuildCorePacket(),
-				_frameworkAssembler.BuildPluginPacket(),
-				_frameworkAssembler.BuildSchedulingPacket(),
-				_frameworkAssembler.BuildLoggingPacket(),
-				_frameworkAssembler.BuildAnalyzePacket(),
-				_frameworkAssembler.BuildApiPacket(),
+				_frameworkAssembler.BuildCoreModule(),
+				_frameworkAssembler.BuildPluginModule(),
+				_frameworkAssembler.BuildSchedulingModule(),
+				_frameworkAssembler.BuildLoggingModule(),
+				_frameworkAssembler.BuildAnalyzeModule(),
+				_frameworkAssembler.BuildApiModule(),
 			];
 
 			if(executions.Any((x) => (x != null) && (x.Status == RelianceMetadataStatus.Error)))
