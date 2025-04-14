@@ -2,8 +2,8 @@
 
 namespace Reliance.Core.Launch.Interfaces
 {
-    internal interface IJsonConfigAnalyzer
+    internal interface ILauncherConfig
     {
-        public RelianceMetadata? Analyze();
+        public RelianceMetadata? Launch();
     }
 }
