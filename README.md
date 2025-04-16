@@ -2,12 +2,12 @@
 
 # Описание
 
-Версия: 0.0.7-base.1
+Версия: 0.0.8-base.0
 
 # Последние изменения
-Убрана XML-документация
+Добавлены файлы ObjectIdGenerator и MetadataMediator
 
-chore(Global): Убрана XML-документация
+feat(Reliance.Utility): Добавлены файлы ObjectIdGenerator и MetadataMediator
 
 Kirill
 2025-04-16

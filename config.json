@@ -1,7 +1,7 @@
 {
   "externalPart": {
     "assembleConfiguration": {
-      "version": "0.0.7-base.1"
+      "version": "0.0.8-base.0"
     },
     "clusterConfiguration": {
       "name": "Remotism-Explorer",
