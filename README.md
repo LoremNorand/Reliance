@@ -2,12 +2,12 @@
 
 # Описание
 
-Версия: 0.0.7-base.0
+Версия: 0.0.7-base.1
 
 # Последние изменения
-Добавлены IAlarm, IAlarmInnards и BaseAlarm
+Убрана XML-документация
 
-feat(Reliance.Scheduling)[base]: Добавлены IAlarm, IAlarmInnards и BaseAlarm
+chore(Global): Убрана XML-документация
 
 Kirill
 2025-04-16
