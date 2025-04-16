@@ -4,18 +4,18 @@
 
 	public interface IFrameworkAssembler
 	{
-		public RelianceMetadata? BuildCoreModule();
+		public Metadata? BuildCoreModule();
 
-		public RelianceMetadata? BuildApiModule();
+		public Metadata? BuildApiModule();
 
-		public RelianceMetadata? BuildLoggingModule();
+		public Metadata? BuildLoggingModule();
 
-		public RelianceMetadata? BuildSchedulingModule();
+		public Metadata? BuildSchedulingModule();
 
-		public RelianceMetadata? BuildCachingModule();
+		public Metadata? BuildCachingModule();
 
-		public RelianceMetadata? BuildAnalyzeModule();
+		public Metadata? BuildAnalyzeModule();
 
-		public RelianceMetadata? BuildPluginModule();
+		public Metadata? BuildPluginModule();
 	}
 }

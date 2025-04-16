@@ -4,8 +4,8 @@ namespace Reliance.Scheduling.Alarms
 {
 	internal interface IAlarmInnards
 	{
-		protected RelianceMetadata? InternalRegister(RelianceMetadata? __metadata = null);
+		protected Metadata? InternalRegister(Metadata? __metadata = null);
 		protected Task InternalRunAsync(CancellationToken cancellationToken);
-		protected RelianceMetadata? InternalRaiseEvent(RelianceMetadata? __metadata = null);
+		protected Metadata? InternalRaiseEvent(Metadata? __metadata = null);
 	}
 }

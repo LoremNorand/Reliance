@@ -4,7 +4,7 @@ namespace Reliance.Core.DI
 {
     internal class CoreModuleService : ICoreModuleService
     {
-        public RelianceMetadata? BuildCoreModule()
+        public Metadata? BuildCoreModule()
         {
             throw new NotImplementedException();
         }

@@ -13,7 +13,7 @@
 		Unidentified
 	}
 
-	public record RelianceMetadata
+	public record Metadata
 	{
 		public readonly string Name;
 		public readonly DateTime CallTime;
@@ -21,7 +21,7 @@
 		public readonly object Caller;
 		public readonly RelianceMetadataStatus Status;
 
-		public RelianceMetadata(object caller, string[] args, RelianceMetadataStatus status)
+		public Metadata(object caller, string[] args, RelianceMetadataStatus status)
 		{
 			Caller = caller;
 			Args = args;

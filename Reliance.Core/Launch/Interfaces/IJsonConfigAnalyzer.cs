@@ -4,6 +4,6 @@ namespace Reliance.Core.Launch.Interfaces
 {
     internal interface ILauncherConfig
     {
-        public RelianceMetadata? Launch();
+        public Metadata? Launch();
     }
 }

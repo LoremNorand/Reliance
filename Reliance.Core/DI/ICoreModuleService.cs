@@ -4,6 +4,6 @@ namespace Reliance.Core.DI
 {
 	public interface ICoreModuleService
 	{
-		public RelianceMetadata? BuildCoreModule();
+		public Metadata? BuildCoreModule();
 	}
 }

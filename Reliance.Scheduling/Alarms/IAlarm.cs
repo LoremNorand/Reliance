@@ -4,7 +4,7 @@
 
 	public interface IAlarm
 	{
-		public delegate RelianceMetadata? IAlarmHandler();
+		public delegate Metadata? IAlarmHandler();
 
 		public event IAlarmHandler? Notifier;
 	}

@@ -5,37 +5,37 @@
 
 	internal class FrameworkAssembler : IFrameworkAssembler
 	{
-		public RelianceMetadata? BuildAnalyzeModule()
+		public Metadata? BuildAnalyzeModule()
 		{
 			throw new NotImplementedException();
 		}
 
-		public RelianceMetadata? BuildApiModule()
+		public Metadata? BuildApiModule()
 		{
 			throw new NotImplementedException();
 		}
 
-		public RelianceMetadata? BuildCachingModule()
+		public Metadata? BuildCachingModule()
 		{
 			throw new NotImplementedException();
 		}
 
-		public RelianceMetadata? BuildCoreModule()
+		public Metadata? BuildCoreModule()
 		{
 			throw new NotImplementedException();
 		}
 
-		public RelianceMetadata? BuildLoggingModule()
+		public Metadata? BuildLoggingModule()
 		{
 			throw new NotImplementedException();
 		}
 
-		public RelianceMetadata? BuildSchedulingModule()
+		public Metadata? BuildSchedulingModule()
 		{
 			throw new NotImplementedException();
 		}
 
-		public RelianceMetadata? BuildPluginModule()
+		public Metadata? BuildPluginModule()
 		{
 			throw new NotImplementedException();
 		}

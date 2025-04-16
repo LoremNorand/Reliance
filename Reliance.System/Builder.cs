@@ -19,7 +19,7 @@
 
 		public Task StartAsync(CancellationToken cancellationToken)
 		{
-			List<RelianceMetadata?> executions =
+			List<Metadata?> executions =
 			[
 				_frameworkAssembler.BuildCoreModule(),
 				_frameworkAssembler.BuildPluginModule(),
