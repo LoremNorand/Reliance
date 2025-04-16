@@ -2,12 +2,12 @@
 
 # Описание
 
-Версия: 0.0.6-experiment.0
+Версия: 0.0.7-base.0
 
 # Последние изменения
-Добавлен модуль Scheduling. Работоспособность не гарантируется
+Добавлены IAlarm, IAlarmInnards и BaseAlarm
 
-feat(Scheduling)[experiment]: Добавлен модуль Scheduling. Работоспособность не гарантируется
+feat(Reliance.Scheduling)[base]: Добавлены IAlarm, IAlarmInnards и BaseAlarm
 
-LoremNorandStudent
-2025-04-14
+Kirill
+2025-04-16
