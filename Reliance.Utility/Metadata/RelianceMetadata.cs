@@ -1,33 +1,15 @@
 ﻿namespace Reliance.Utility.Metadata
 {
-	/// <summary>
-	/// Defines the RelianceMetadataStatus
-	/// </summary>
 	public enum RelianceMetadataStatus
 	{
-		/// <summary>
-		/// Defines the Error
-		/// </summary>
 		Error,
 
-		/// <summary>
-		/// Defines the Success
-		/// </summary>
 		Success,
 
-		/// <summary>
-		/// Defines the Warning
-		/// </summary>
 		Warning,
 
-		/// <summary>
-		/// Defines the Information
-		/// </summary>
 		Information,
 
-		/// <summary>
-		/// Defines the Unidentified
-		/// </summary>
 		Unidentified
 	}
 
