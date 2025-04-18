@@ -4,8 +4,16 @@ namespace Reliance.Scheduling.Alarms
 {
 	public class IntervalAlarm : BaseAlarm
 	{
+		#region Protected Fields
 
 		protected TimeSpan _interval;
+
+		#endregion Protected Fields
+
+
+
+		#region Public Constructors
+
 		public IntervalAlarm(string name) : base(name)
 		{
 			_interval = TimeSpan.FromSeconds(60);
@@ -16,7 +24,19 @@ namespace Reliance.Scheduling.Alarms
 			_interval = interval;
 		}
 
+		#endregion Public Constructors
+
+
+
+		#region Public Events
+
 		public override event IAlarm.IAlarmHandler? Notifier;
+
+		#endregion Public Events
+
+
+
+		#region Protected Methods
 
 		protected override Metadata? RaiseEvent(Metadata? __metadata = null)
 		{
@@ -36,7 +56,7 @@ namespace Reliance.Scheduling.Alarms
 					await Task.Delay(_interval, cancellationToken);
 					RaiseEvent();
 				}
-				catch (TaskCanceledException)
+				catch(TaskCanceledException)
 				{
 					break;
 				}
@@ -47,5 +67,7 @@ namespace Reliance.Scheduling.Alarms
 				}
 			}
 		}
+
+		#endregion Protected Methods
 	}
 }

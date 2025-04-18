@@ -2,11 +2,15 @@
 
 namespace Reliance.Core.DI
 {
-    internal class CoreModuleService : ICoreModuleService
-    {
-        public Metadata? BuildCoreModule()
-        {
-            throw new NotImplementedException();
-        }
-    }
+	internal class CoreModuleService : ICoreModuleService
+	{
+		#region Public Methods
+
+		public Metadata? BuildCoreModule()
+		{
+			throw new NotImplementedException();
+		}
+
+		#endregion Public Methods
+	}
 }

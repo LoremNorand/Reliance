@@ -4,6 +4,10 @@ namespace Reliance.Core.DI
 {
 	public interface ICoreModuleService
 	{
+		#region Public Methods
+
 		public Metadata? BuildCoreModule();
+
+		#endregion Public Methods
 	}
 }

@@ -1,25 +1,20 @@
 ﻿namespace Reliance.Utility.Metadata
 {
-	public enum MetadataStatus
-	{
-		Error,
-
-		Success,
-
-		Warning,
-
-		Information,
-
-		Unidentified
-	}
-
 	public record Metadata
 	{
-		public readonly string Name;
-		public readonly DateTime CallTime;
+		#region Public Fields
+
 		public readonly string[] Args;
 		public readonly object Caller;
+		public readonly DateTime CallTime;
+		public readonly string Name;
 		public readonly MetadataStatus Status;
+
+		#endregion Public Fields
+
+
+
+		#region Public Constructors
 
 		public Metadata(object caller, string[] args, MetadataStatus status)
 		{
@@ -29,6 +24,12 @@
 			CallTime = DateTime.Now;
 			Status = status;
 		}
+
+		#endregion Public Constructors
+
+
+
+		#region Public Methods
 
 		public override string? ToString()
 		{
@@ -40,5 +41,7 @@
                 Аргументы: {string.Join(",", Args)}\n
                 """;
 		}
+
+		#endregion Public Methods
 	}
 }

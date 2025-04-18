@@ -7,8 +7,16 @@
 
 	public abstract class BaseAlarm : IAlarm, IAlarmInnards, IDisposable
 	{
+		#region Protected Fields
+
 		protected CancellationTokenSource? _cancellationTokenSource = new();
 		protected string _name;
+
+		#endregion Protected Fields
+
+
+
+		#region Protected Constructors
 
 		protected BaseAlarm(string name = "")
 		{
@@ -17,6 +25,28 @@
 			Name = name;
 			Register();
 		}
+
+		#endregion Protected Constructors
+
+
+
+ 		#region Private Destructors
+
+		~BaseAlarm() => Dispose();
+
+		#endregion Private Destructors
+
+
+
+		#region Public Events
+
+		public abstract event IAlarm.IAlarmHandler? Notifier;
+
+		#endregion Public Events
+
+
+
+		#region Public Properties
 
 		public string Name
 		{
@@ -33,11 +63,19 @@
 			}
 		}
 
-		public abstract event IAlarm.IAlarmHandler? Notifier;
+		#endregion Public Properties
+
+
+
+		#region Protected Properties
 
 		protected CancellationToken? InternalToken => _cancellationTokenSource?.Token;
 
-		~BaseAlarm() => Dispose();
+		#endregion Protected Properties
+
+
+
+		#region Public Methods
 
 		public void Dispose()
 		{
@@ -47,17 +85,6 @@
 				_cancellationTokenSource.Dispose();
 				_cancellationTokenSource = null;
 			}
-		}
-
-		public virtual void Start()
-		{
-			_cancellationTokenSource = new CancellationTokenSource();
-			Task.Run(() => RunAsync(_cancellationTokenSource.Token));
-		}
-
-		public virtual void Start(TimeSpan delay)
-		{
-
 		}
 
 		Metadata? IAlarmInnards.InternalRaiseEvent(Metadata? __metadata)
@@ -70,12 +97,36 @@
 			=> RunAsync(CancellationTokenSource.
 				CreateLinkedTokenSource(cancellationToken, _cancellationTokenSource.Token).Token);
 
+		public virtual void Start()
+		{
+			_cancellationTokenSource = new CancellationTokenSource();
+			Task.Run(() => RunAsync(_cancellationTokenSource.Token));
+		}
+
+		public virtual void Start(TimeSpan delay)
+		{
+		}
+
+		#endregion Public Methods
+
+
+
+		#region Protected Methods
+
 		protected abstract Metadata? RaiseEvent(Metadata? __metadata = null);
+
+		protected abstract Task RunAsync(CancellationToken cancellationToken);
+
+		#endregion Protected Methods
+
+		#region Private Methods
+
 		private Metadata? Register(Metadata? __metadata = null)
 		{
 			AlarmVault.Instance[_name] = this;
 			return new Metadata(this, ["BaseAlarm Register()"], MetadataStatus.Success);
 		}
-		protected abstract Task RunAsync(CancellationToken cancellationToken);
+
+		#endregion Private Methods
 	}
 }
