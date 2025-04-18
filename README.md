@@ -2,12 +2,12 @@
 
 # Описание
 
-Версия: 0.0.8-base.0
+Версия: 0.0.8-base.1
 
 # Последние изменения
-Добавлены файлы ObjectIdGenerator и MetadataMediator
+IntervalAlarm работает
 
-feat(Reliance.Utility): Добавлены файлы ObjectIdGenerator и MetadataMediator
+refactor(Scheduling): IntervalAlarm работает
 
 Kirill
-2025-04-16
+2025-04-18
