@@ -2,12 +2,12 @@
 
 # Описание
 
-Версия: 0.0.8-base.1
+Версия: 0.0.9-base.0
 
 # Последние изменения
-IntervalAlarm работает
+BaseAlarm.Start() теперь виртуальный. Добавлен StampAlarm
 
-refactor(Scheduling): IntervalAlarm работает
+feat(Reliance.Scheduling.Alarms): BaseAlarm.Start() теперь виртуальный. Добавлен StampAlarm
 
 Kirill
 2025-04-18
