@@ -29,7 +29,7 @@
 				_frameworkAssembler.BuildApiModule(),
 			];
 
-			if(executions.Any((x) => (x != null) && (x.Status == RelianceMetadataStatus.Error)))
+			if(executions.Any((x) => (x != null) && (x.Status == MetadataStatus.Error)))
 			{
 				// TODO: Логгирование об ошибке
 			}

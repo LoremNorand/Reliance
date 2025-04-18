@@ -7,8 +7,16 @@
 
 	public abstract class BaseAlarm : IAlarm, IAlarmInnards, IDisposable
 	{
-		private CancellationTokenSource _cancellationTokenSource = new();
-		protected string _name = "";
+		protected CancellationTokenSource? _cancellationTokenSource = new();
+		protected string _name;
+
+		protected BaseAlarm(string name = "")
+		{
+			if((name == null) || (name.Length == 0))
+				name = "Undefined-" + ObjectIdGenerator.Next();
+			Name = name;
+			Register();
+		}
 
 		public string Name
 		{
@@ -18,22 +26,16 @@
 				string buffer = value;
 				if(AlarmVault.Instance.IsOccupied(buffer))
 				{
-					buffer += ObjectIdGenerator.Next();
-					var __meta = new Metadata(this,
-					[
-						"name was occupied",
-						$"old = {value}",
-						$"new = {buffer}"
-					], 
-					RelianceMetadataStatus.Warning);
+					buffer = $"{buffer}-{ObjectIdGenerator.Next()}";
+					MetadataMediator.ValueWasChanged(value, buffer, this);
 				}
 				_name = buffer;
 			}
 		}
 
-		public event IAlarm.IAlarmHandler? Notifier;
+		public abstract event IAlarm.IAlarmHandler? Notifier;
 
-		protected CancellationToken InternalToken => _cancellationTokenSource.Token;
+		protected CancellationToken? InternalToken => _cancellationTokenSource?.Token;
 
 		~BaseAlarm() => Dispose();
 
@@ -47,6 +49,8 @@
 			}
 		}
 
+		public abstract void Start();
+
 		Metadata? IAlarmInnards.InternalRaiseEvent(Metadata? __metadata)
 			=> RaiseEvent(__metadata);
 
@@ -58,10 +62,10 @@
 				CreateLinkedTokenSource(cancellationToken, _cancellationTokenSource.Token).Token);
 
 		protected abstract Metadata? RaiseEvent(Metadata? __metadata = null);
-		private Metadata? Register(Metadata? __metadata)
+		private Metadata? Register(Metadata? __metadata = null)
 		{
 			AlarmVault.Instance[_name] = this;
-			return new Metadata(this, ["BaseAlarm Register()"], RelianceMetadataStatus.Success);
+			return new Metadata(this, ["BaseAlarm Register()"], MetadataStatus.Success);
 		}
 		protected abstract Task RunAsync(CancellationToken cancellationToken);
 	}

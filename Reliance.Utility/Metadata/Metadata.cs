@@ -1,6 +1,6 @@
 ﻿namespace Reliance.Utility.Metadata
 {
-	public enum RelianceMetadataStatus
+	public enum MetadataStatus
 	{
 		Error,
 
@@ -19,9 +19,9 @@
 		public readonly DateTime CallTime;
 		public readonly string[] Args;
 		public readonly object Caller;
-		public readonly RelianceMetadataStatus Status;
+		public readonly MetadataStatus Status;
 
-		public Metadata(object caller, string[] args, RelianceMetadataStatus status)
+		public Metadata(object caller, string[] args, MetadataStatus status)
 		{
 			Caller = caller;
 			Args = args;
@@ -37,7 +37,7 @@
                 {CallTime}
                 Статус: {Status}
                 Объект вызова: {Caller}
-                Аргументы: {string.Join(",", Args)}
+                Аргументы: {string.Join(",", Args)}\n
                 """;
 		}
 	}
