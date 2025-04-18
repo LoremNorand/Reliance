@@ -49,7 +49,16 @@
 			}
 		}
 
-		public abstract void Start();
+		public virtual void Start()
+		{
+			_cancellationTokenSource = new CancellationTokenSource();
+			Task.Run(() => RunAsync(_cancellationTokenSource.Token));
+		}
+
+		public virtual void Start(TimeSpan delay)
+		{
+
+		}
 
 		Metadata? IAlarmInnards.InternalRaiseEvent(Metadata? __metadata)
 			=> RaiseEvent(__metadata);

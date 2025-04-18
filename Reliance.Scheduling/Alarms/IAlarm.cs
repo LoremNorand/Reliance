@@ -4,7 +4,7 @@
 
 	public interface IAlarm
 	{
-		public delegate Metadata? IAlarmHandler();
+		public delegate void IAlarmHandler();
 
 		public event IAlarmHandler? Notifier;
 	}

@@ -18,12 +18,6 @@ namespace Reliance.Scheduling.Alarms
 
 		public override event IAlarm.IAlarmHandler? Notifier;
 
-		public override void Start()
-		{
-			_cancellationTokenSource = new CancellationTokenSource();
-			Task.Run(() => RunAsync(_cancellationTokenSource.Token));
-		}
-
 		protected override Metadata? RaiseEvent(Metadata? __metadata = null)
 		{
 			Notifier?.Invoke();
