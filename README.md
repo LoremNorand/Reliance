@@ -2,12 +2,12 @@
 
 # Описание
 
-Версия: 0.0.9-base.0
+Версия: 0.0.9-base.1
 
 # Последние изменения
-BaseAlarm.Start() теперь виртуальный. Добавлен StampAlarm
+Код отформатирован по Google Style Guide
 
-feat(Reliance.Scheduling.Alarms): BaseAlarm.Start() теперь виртуальный. Добавлен StampAlarm
+style(Global): Код отформатирован по Google Style Guide
 
 Kirill
 2025-04-18
