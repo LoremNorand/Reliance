@@ -2,12 +2,12 @@
 
 # Описание
 
-Версия: 0.0.9-base.1
+Версия: 0.0.10-base.0
 
 # Последние изменения
-Код отформатирован по Google Style Guide
+StampAlarm полностью работает
 
-style(Global): Код отформатирован по Google Style Guide
+feat(StampAlarm.cs): StampAlarm полностью работает
 
 Kirill
-2025-04-18
+2025-04-19
