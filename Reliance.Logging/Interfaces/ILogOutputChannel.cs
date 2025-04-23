@@ -1,7 +1,7 @@
 ﻿namespace Reliance.Logging.Interfaces
 {
-	public interface ILogOutputChannel<T>
+	public interface ILogOutputChannel
 	{
-		public void Post(T message);
+		public void Post<T>(T message);
 	}
 }

@@ -2,11 +2,11 @@
 
 namespace Reliance.Scheduling.Alarms
 {
-	public class AlarmVault
+	public class AlarmStorage
 	{
 		#region Private Fields
 
-		private static readonly AlarmVault _instance = new();
+		private static readonly AlarmStorage _instance = new();
 
 		private Dictionary<string, BaseAlarm> _alarms = new();
 
@@ -16,7 +16,7 @@ namespace Reliance.Scheduling.Alarms
 
 		#region Private Constructors
 
-		private AlarmVault()
+		private AlarmStorage()
 		{ }
 
 		#endregion Private Constructors
@@ -25,7 +25,7 @@ namespace Reliance.Scheduling.Alarms
 
 		#region Public Properties
 
-		public static AlarmVault Instance => _instance ?? new();
+		public static AlarmStorage Instance => _instance ?? new();
 
 		#endregion Public Properties
 

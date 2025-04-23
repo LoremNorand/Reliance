@@ -1,18 +1,19 @@
 ﻿using Reliance.Logging.Implementations.LogHandling;
 using Reliance.Logging.Implementations.LogOutput;
 using Reliance.Logging.Interfaces;
+using Reliance.Core.Storage;
 
 namespace Reliance.Logging.Implementations
 {
-	public class LoggerNode : ILoggerNode<string>
+	public class LoggerNode : BaseStorageComponent, ILoggerNode
 	{
 		#region Private Fields
 
 		private ILogFormatter _formatter = new UnicodeLogFormatter();
 		private int _level = 0;
 		private string _name = "Безымянный узел";
-		private ILogOutputChannel<string> _outputChannel = new LogConsoleOutput();
-		private ILoggerNode<string>? _parent;
+		private ILogOutputChannel _outputChannel = new LogConsoleOutput();
+		private ILoggerNode? _parent;
 
 		#endregion Private Fields
 
@@ -32,19 +33,18 @@ namespace Reliance.Logging.Implementations
 			protected set => _level = value;
 		}
 
-		public string Name
+		public override string Name
 		{
 			get => _name;
-			set => _name = value;
 		}
 
-		public ILogOutputChannel<string> OutputChannel
+		public ILogOutputChannel OutputChannel
 		{
 			get => _outputChannel;
 			set => _outputChannel = value;
 		}
 
-		public ILoggerNode<string>? Parent
+		public ILoggerNode? Parent
 		{
 			get => _parent;
 			set

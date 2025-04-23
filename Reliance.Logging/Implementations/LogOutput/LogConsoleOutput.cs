@@ -2,11 +2,11 @@
 
 namespace Reliance.Logging.Implementations.LogOutput
 {
-	public class LogConsoleOutput : ILogOutputChannel<string>
+	public class LogConsoleOutput : ILogOutputChannel
 	{
-		public void Post(string message)
+		public void Post<T>(T message)
 		{
-			Console.WriteLine(message);
+			Console.WriteLine(message?.ToString());
 		}
 	}
 }
