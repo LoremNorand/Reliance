@@ -1,7 +1,12 @@
-﻿namespace Reliance.Utility.Metadata
+﻿using System.Runtime.CompilerServices;
+
+namespace Reliance.Utility.Metadata
 {
 	public record Metadata
 	{
+		public delegate void Action(Metadata metadata);
+		public static event Action? MetadataCreated;
+
 		#region Public Fields
 
 		public readonly string[] Args;
@@ -23,6 +28,7 @@
 			Name = caller.GetType().Name;
 			CallTime = DateTime.Now;
 			Status = status;
+			MetadataCreated?.Invoke(this);
 		}
 
 		#endregion Public Constructors
