@@ -2,12 +2,12 @@
 
 # Описание
 
-Версия: 0.0.11-base.1
+Версия: 0.0.11-base.2
 
 # Последние изменения
-LoggingManager заменён на LoggingStorage. Абстракции для хранилищ
+Реструктуризация модуля Logging
 
-refactor(Core, Logging): LoggingManager заменён на LoggingStorage. Абстракции для хранилищ
+refactor(Core, Logging): Реструктуризация модуля Logging
 
-Kirill
+LoremNorandStudent
 2025-04-23
