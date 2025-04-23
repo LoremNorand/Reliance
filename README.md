@@ -2,12 +2,12 @@
 
 # Описание
 
-Версия: 0.0.11-base.0
+Версия: 0.0.11-base.1
 
 # Последние изменения
-Добавлен новый модуль Logging. Работает
+LoggingManager заменён на LoggingStorage. Абстракции для хранилищ
 
-feat(Reliance.Logging): Добавлен новый модуль Logging. Работает
+refactor(Core, Logging): LoggingManager заменён на LoggingStorage. Абстракции для хранилищ
 
 Kirill
 2025-04-23
