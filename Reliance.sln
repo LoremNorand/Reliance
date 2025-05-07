@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reliance.Utility", "Relianc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reliance.Scheduling", "Reliance.Scheduling\Reliance.Scheduling.csproj", "{9C5C50A0-8AB6-4919-A052-A809C637AEB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reliance.Logging", "Reliance.Logging\Reliance.Logging.csproj", "{0BDACB51-9829-466A-ACAD-E9809276CF17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reliance.Logging", "Reliance.Logging\Reliance.Logging.csproj", "{0BDACB51-9829-466A-ACAD-E9809276CF17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reliance.Communication", "Reliance.Communication\Reliance.Communication.csproj", "{474763A6-E6B7-4B7B-A535-52B92D389042}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{0BDACB51-9829-466A-ACAD-E9809276CF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BDACB51-9829-466A-ACAD-E9809276CF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BDACB51-9829-466A-ACAD-E9809276CF17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{474763A6-E6B7-4B7B-A535-52B92D389042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{474763A6-E6B7-4B7B-A535-52B92D389042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{474763A6-E6B7-4B7B-A535-52B92D389042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{474763A6-E6B7-4B7B-A535-52B92D389042}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
